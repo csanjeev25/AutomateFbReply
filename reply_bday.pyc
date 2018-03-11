@@ -1,0 +1,20 @@
+from facepy import GraphAPI
+import datetime
+import requests
+import json
+
+access_token=''
+oauth='FB_API_KEY'
+graph=GraphAPI(oauth)
+wish=['Thank You for your wishes!!!']
+bday=25-12-1997
+profile = graph.get_object(user)
+posts = graph.get_connections(profile['id'], 'feed')
+birthday_posts = [post for post in posts['data'] if parse_date(post) == bday.date()]
+
+if datetime.datetime.now.strftime('%d-%m-%Y'):
+    profile = graph.get_object(user)
+    posts = graph.get_connections(profile['id'], 'feed')
+    birthday_posts = [post for post in posts['data'] if parse_date(post) == bday.date()]
+    for post in birthday_posts:
+        graph.like_and_comment(post)
